@@ -1,0 +1,135 @@
+docker
+=====================
+
+Building an Image: 
+
+docker build -t <image-name>.
+
+
+Running a Container: 
+
+           docker run <image-name>
+
+Inspecting Images/Containers:
+
+docker images - List all images
+docker ps - List running containers
+
+
+Creating a Volume: 
+          docker volume create <volume-name>
+Mounting a Volume: 
+         docker run -v <volume-name>:/data <image-name>
+
+
+docker build -t my-node-app .
+
+# Run the Docker container
+docker run -p 3000:3000 my-node-app
+
+# List running containers
+docker ps
+
+# Stop and remove container
+docker stop <container_id>
+docker rm <container_id>
+
+kubectl
+------------------
+
+Create deployment: 
+
+kubectl create deployment <deployment_name>
+
+Edit deployment:   
+
+kubectl edit deployment <deployment_name>
+
+Delete deployment: 
+
+kubectl delete deployment <deployment_name>
+
+
+Get the status of different K8s components
+
+kubectl get (nodes | pod | services | replicaset | deployment )
+
+Debugging Pods
+
+
+Logging to console:
+
+kubectl logs <pod_name>
+
+Get interactive terminal:
+
+kubectl exec -it <pod_name> – /bin/bash
+
+
+Get info about pod:
+
+kubectl describe pod <pod_name>
+
+use -f to following:
+
+e.g.: kubectl logs -f <pod_name>
+
+
+Use Configuration file for Crud
+
+Apply a configuration file:
+
+           kubectl apply -f <file_name>.
+
+
+Deleting using configuration file:
+
+           kubectl delete -f <file_name>
+
+
+kubectl version
+
+
+kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
+
+
+View the Deployment:
+
+
+ kubectl get deployments
+
+
+NAME     READY   UP-TO-DATE   AVAILABLE   AGE
+hello-node   1/1     1       1       1m
+
+
+View the Pod:
+
+            kubectl get pods.
+
+View cluster events:
+
+kubectl get events,
+
+View the kubectl configuration:
+
+            kubectl config view
+
+View application logs
+
+kubectl logs hello-node-5f76cf6ccf-br9b5
+
+
+Expose the Pod to the public internet using the kubectl expose command:
+
+kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+
+View the Service you created:
+
+
+kubectl get services
+
+Clean up:
+
+kubectl delete service hello-node
+kubectl delete deployment hello-node

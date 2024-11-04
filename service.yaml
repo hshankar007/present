@@ -1,0 +1,15 @@
+# service-clusterip.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-clusterip
+  labels:
+    app: my-app
+spec:
+  type: ClusterIP
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80       # Service port
+      targetPort: 8080 # The port on the pod
